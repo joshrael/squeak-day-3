@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ search_term }} - {{ location }}</h2>
+<ul class='entries'>
+{% for number in numbers %}
+<li>{{ number }}</li>
+{% endfor %}
+</ul>
+<a href="{{ url_for('index') }}">back</a>
+{% endblock %}
