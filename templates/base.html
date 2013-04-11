@@ -1,3 +1,5 @@
+<!-- Template inheritance -->
+
 <!doctype html>
 <html>
     <head>
@@ -7,6 +9,7 @@
     <body>
         <div class="page">
             <h1>Squeak</h1>
+            <!-- Paste the content from index.html here -->
             {% block content %}{% endblock %}
             <img width='50px' height='50px' src="{{ url_for('static', filename='fork-knife.jpg') }}" />
         </div>

@@ -2,9 +2,30 @@
 {% block content %}
 <h2>{{ search_term }} - {{ location }}</h2>
 <ul class='entries'>
-{% for number in numbers %}
-<li>{{ number }}</li>
-{% endfor %}
+	{% for business in businesses %}
+		<li>
+			<div>
+				<!-- grab the information from json -->
+				<h4><a href="{{business['url']}}"> {{business['name']}}</a></h4>
+				
+				{% for category in business['categories'] %}
+				<!-- if not the last loop put a comma -->
+				{{ category[0] }}{% if not loop.last %}, {% endif %} 
+				{% endfor %}
+
+				<br/>
+				<!-- join two strings of address with quote and space --> 
+				{{ business['location']['display_address']|join(', ')}}
+
+				<br/>
+				{{ business['display_phone'] }}
+
+				<br/>
+				<img src="{{ business['rating_img_url'] }}" alt="{{ business['rating'] }}"/>
+			</div>
+
+		</li>
+	{% endfor %}
 </ul>
 <a href="{{ url_for('index') }}">back</a>
 {% endblock %}
